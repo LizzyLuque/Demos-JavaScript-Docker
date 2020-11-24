@@ -1,0 +1,12 @@
+node_modules/
+e2e/
+src/
+angular.json
+karma.conf.js
+package-lock.json
+tsconfig.json
+package.json
+README.md
+tsconfig.app.json
+tsconfig.spec.json
+tslint.json

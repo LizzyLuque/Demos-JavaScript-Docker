@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.IMAGE_PATH = exports.SEED_AUTENTICACION = exports.CADUCIDAD_TOKEN = exports.DB_DATABASE = exports.DB_HOST = exports.DB_PORT = exports.SERVER_PORT = void 0;
+exports.SERVER_PORT = Number(process.env.PORT || 5000);
+exports.DB_PORT = 27017;
+exports.DB_HOST = "database"; //"localhost";
+exports.DB_DATABASE = "api_rest_blog";
+exports.CADUCIDAD_TOKEN = "48h";
+exports.SEED_AUTENTICACION = (process.env.SEED_AUTENTICACION || "semilla-desarrollo").toString();
+exports.IMAGE_PATH = "./uploads/articles/";

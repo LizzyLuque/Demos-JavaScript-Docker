@@ -1,0 +1,39 @@
+version: "3.0"
+
+services:
+  frontend:
+    container_name: demos-javascript-frontend
+    depends_on:
+      - database
+      - backend
+    image: nginx:latest
+    volumes:
+      # Montamos nuestra web desde fuera, en el directorio web del contenedor
+      - ./frontend/dist/:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+        - "80:80"        
+
+  database:
+    container_name: mongo
+    image: mongo
+    ports:
+    - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+      - ./data/configdb:/data/configdb      
+
+  backend:
+    container_name: demos-javascript-backend
+    image: demos-javascript-backend
+    build: ./backend/
+    depends_on:
+      - database    
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "5000:5000"
+    volumes:
+        - ./backend/uploads/articles:/usr/src/app/uploads/articles      
+    working_dir: '/usr/src/app'    
+
